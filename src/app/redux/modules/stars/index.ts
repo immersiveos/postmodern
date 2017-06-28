@@ -14,22 +14,13 @@ const initialState: IStars = {
 export function starsReducer(state = initialState, action: IStarsAction) {
   switch (action.type) {
     case GET_REQUEST:
-      return Object.assign({}, state, {
-        isFetching: true,
-      });
+      return { ...state, isFetching: true };
 
     case GET_SUCCESS:
-      return Object.assign({}, state, {
-        isFetching: false,
-        count: action.payload.count,
-      });
+      return { ...state, isFetching: false, count: action.payload.count };
 
     case GET_FAILURE:
-      return Object.assign({}, state, {
-        isFetching: false,
-        message: action.payload.message,
-        error: true,
-      });
+      return { ...state, isFetching: false, message: action.payload.message, error: true };
 
     default:
       return state;
